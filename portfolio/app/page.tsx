@@ -30,7 +30,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { LoadingAnimation } from "@/components/ui/loading-animation"
+
 
 export default function Portfolio() {
   const [loading, setLoading] = useState(true)
@@ -373,9 +373,7 @@ export default function Portfolio() {
     )
   }
 
-  if (loading) {
-    return <LoadingAnimation />;
-  }
+  // Removed duplicate LoadingAnimation fallback
   return (
     <div className={`min-h-screen font-inter ${darkMode ? "dark" : ""}`}>
       <div className="bg-gradient-to-br from-white via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-800 dark:text-white transition-colors duration-500 relative overflow-hidden">
@@ -602,23 +600,54 @@ export default function Portfolio() {
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="flex space-x-6"
                 >
-                  {[
+                  {[ 
                     { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
-                    { icon: Linkedin, href: "www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
-                    { icon: Instagram, href: "#", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
-                    { icon: Mail, href: "yukesshwaran6@gmail.com", color: "hover:text-green-600", bg: "hover:bg-green-50" },
-                  ].map(({ icon: Icon, href, color, bg }, index) => (
-                    <motion.a
-                      key={index}
-                      href={href}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm 
-                        ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                    >
-                      <Icon className="w-6 h-6" />
-                    </motion.a>
-                  ))}
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
+                    { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
+                    { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", bg: "hover:bg-green-50", isMail: true },
+                  ].map(({ icon: Icon, href, color, bg, isMail }, index) => {
+                    if (isMail) {
+                      // Accessible mail icon: open mail client on click or Enter/Space
+                      return (
+                        <motion.a
+                          key={index}
+                          href={href}
+                          tabIndex={0}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
+                          style={{ cursor: 'pointer' }}
+                          aria-label="Send mail"
+                          role="button"
+                          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                            e.preventDefault();
+                            window.location.href = href;
+                          }}
+                          onKeyDown={(e: React.KeyboardEvent<HTMLAnchorElement>) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              window.location.href = href;
+                            }
+                          }}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </motion.a>
+                      );
+                    }
+                    return (
+                      <motion.a
+                        key={index}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
+                      >
+                        <Icon className="w-6 h-6" />
+                      </motion.a>
+                    );
+                  })}
                 </motion.div>
 
                 {/* Resume Download and Contact Me Buttons */}
@@ -636,16 +665,16 @@ export default function Portfolio() {
                     Contact Me
                   </Button>
                   <Button
-                    onClick={() => handleResumeDownload("pdf")}
-                    className={`bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg ${downloadStatus === "downloading" ? "animate-pulse" : ""}`}
-                    disabled={downloadStatus === "downloading"}
+                    asChild
                   >
-                    <Download className="w-5 h-5 mr-2" />
-                    {downloadStatus === "downloading"
-                      ? "Downloading..."
-                      : downloadStatus === "downloaded"
-                        ? "Downloaded! ✨"
-                        : "Download Resume"}
+                    <a
+                      href="/Yukesshwaran[22ITR120] (6).pdf"
+                      download
+                      className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg"
+                    >
+                      <Download className="w-5 h-5 mr-2" />
+                      Download Resume
+                    </a>
                   </Button>
                 </motion.div>
               </motion.div>
