@@ -825,23 +825,53 @@ export default function Portfolio() {
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="flex space-x-6"
                 >
-                  {[
-                    { icon: Github, href: "#", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
-                    { icon: Linkedin, href: "#", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
-                    { icon: Instagram, href: "#", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
-                    { icon: Mail, href: "#", color: "hover:text-green-600", bg: "hover:bg-green-50" },
-                  ].map(({ icon: Icon, href, color, bg }, index) => (
-                    <motion.a
-                      key={index}
-                      href={href}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm 
-                        ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                    >
-                      <Icon className="w-6 h-6" />
-                    </motion.a>
-                  ))}
+                  {[ 
+                    { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
+                    { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
+                    { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", bg: "hover:bg-green-50", isMail: true },
+                  ].map(({ icon: Icon, href, color, bg, isMail }, index) => {
+                    if (isMail) {
+                      return (
+                        <motion.a
+                          key={index}
+                          href={href}
+                          tabIndex={0}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
+                          style={{ cursor: 'pointer' }}
+                          aria-label="Send mail"
+                          role="button"
+                          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                            e.preventDefault();
+                            window.location.href = href;
+                          }}
+                          onKeyDown={(e: React.KeyboardEvent<HTMLAnchorElement>) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              window.location.href = href;
+                            }
+                          }}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </motion.a>
+                      );
+                    }
+                    return (
+                      <motion.a
+                        key={index}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
+                      >
+                        <Icon className="w-6 h-6" />
+                      </motion.a>
+                    );
+                  })}
                 </motion.div>
                
               </motion.div>
@@ -1450,21 +1480,52 @@ export default function Portfolio() {
               </div>
               <div className="flex items-center space-x-6">
                 {[
-                  { icon: Github, href: "#", color: "hover:text-gray-700" },
-                  { icon: Linkedin, href: "#", color: "hover:text-blue-600" },
-                  { icon: Instagram, href: "#", color: "hover:text-pink-600" },
-                  { icon: Mail, href: "#", color: "hover:text-green-600" },
-                ].map(({ icon: Icon, href, color }, index) => (
-                  <motion.a
-                    key={index}
-                    href={href}
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`text-gray-500 ${color} transition-all duration-300`}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </motion.a>
-                ))}
+                  { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600" },
+                  { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600" },
+                  { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", isMail: true },
+                ].map(({ icon: Icon, href, color, isMail }, index) => {
+                  if (isMail) {
+                    return (
+                      <motion.a
+                        key={index}
+                        href={href}
+                        tabIndex={0}
+                        whileHover={{ scale: 1.2, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        className={`text-gray-500 ${color} transition-all duration-300`}
+                        style={{ cursor: 'pointer' }}
+                        aria-label="Send mail"
+                        role="button"
+                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                          e.preventDefault();
+                          window.location.href = href;
+                        }}
+                        onKeyDown={(e: React.KeyboardEvent<HTMLAnchorElement>) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            window.location.href = href;
+                          }
+                        }}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </motion.a>
+                    );
+                  }
+                  return (
+                    <motion.a
+                      key={index}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                      className={`text-gray-500 ${color} transition-all duration-300`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </motion.a>
+                  );
+                })}
               </div>
             </div>
           </div>
