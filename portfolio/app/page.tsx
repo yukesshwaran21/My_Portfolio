@@ -1099,7 +1099,7 @@ export default function Portfolio() {
               >
                 <div className="aspect-video overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=200&width=400"
+                    src="/kongu.jpeg"
                     alt="Kongu Engineering College"
                     className="w-full h-full object-cover"
                   />
@@ -1148,7 +1148,7 @@ export default function Portfolio() {
               >
                 <div className="aspect-video overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=200&width=400"
+                    src="/images.jpeg"
                     alt="Kendriya Vidyalaya Gandhigram"
                     className="w-full h-full object-cover"
                   />
@@ -1197,7 +1197,7 @@ export default function Portfolio() {
               >
                 <div className="aspect-video overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=200&width=400"
+                    src="/images.jpeg"
                     alt="Kendriya Vidyalaya Gandhigram"
                     className="w-full h-full object-cover"
                   />
