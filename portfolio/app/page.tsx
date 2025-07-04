@@ -603,10 +603,10 @@ export default function Portfolio() {
                   className="flex space-x-6"
                 >
                   {[
-                    { icon: Github, href: "#", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
-                    { icon: Linkedin, href: "#", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
+                    { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
+                    { icon: Linkedin, href: "www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
                     { icon: Instagram, href: "#", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
-                    { icon: Mail, href: "#", color: "hover:text-green-600", bg: "hover:bg-green-50" },
+                    { icon: Mail, href: "yukesshwaran6@gmail.com", color: "hover:text-green-600", bg: "hover:bg-green-50" },
                   ].map(({ icon: Icon, href, color, bg }, index) => (
                     <motion.a
                       key={index}
