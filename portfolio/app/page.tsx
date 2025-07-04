@@ -413,8 +413,8 @@ export default function Portfolio() {
               key={section}
               onClick={() => scrollToSection(section)}
               className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${activeSection === section
-                  ? "bg-blue-500 border-blue-500 scale-125"
-                  : "border-gray-300 hover:border-blue-400"
+                ? "bg-blue-500 border-blue-500 scale-125"
+                : "border-gray-300 hover:border-blue-400"
                 }`}
               whileHover={{ scale: 1.2 }}
               title={section.charAt(0).toUpperCase() + section.slice(1)}
@@ -600,7 +600,7 @@ export default function Portfolio() {
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="flex space-x-6"
                 >
-                  {[ 
+                  {[
                     { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
                     { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
                     { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
@@ -818,14 +818,14 @@ export default function Portfolio() {
                 <p className="text-lg text-gray-600 leading-relaxed">
                   <span style={{ color: 'blue' }}>Place : </span>Erode,TamilNadu - 638453
                 </p>
-                 {/* Social Icons */}
+                {/* Social Icons */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="flex space-x-6"
                 >
-                  {[ 
+                  {[
                     { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
                     { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
                     { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
@@ -873,7 +873,7 @@ export default function Portfolio() {
                     );
                   })}
                 </motion.div>
-               
+
               </motion.div>
             </div>
           </div>
@@ -950,7 +950,7 @@ export default function Portfolio() {
                       transition={{ duration: 0.6 }}
                       className="text-blue-600 font-bold text-lg whitespace-nowrap"
                     >
-                      May 2023 - Present
+                      July 2024 to August 2024
                     </motion.div>
                   </div>
 
@@ -963,22 +963,22 @@ export default function Portfolio() {
                       className="bg-white border border-gray-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow max-w-md"
                     >
                       <div className="mb-4">
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">Ryft</h3>
-                        <h4 className="text-lg font-semibold text-blue-600 mb-3">Machine Learning Engineer</h4>
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">Cognifyz Technologies</h3>
+                        <h4 className="text-lg font-semibold text-blue-600 mb-3">Front-End Development</h4>
                       </div>
 
                       <div className="mb-4">
                         <h5 className="text-sm font-semibold text-gray-700 mb-2">Responsibilities:</h5>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                          Worked on deploying end to end machine learning systems on AWS Batch in Tensorflow and PyTorch
-                          using Metaflow and Docker.
+                          Built an end-to-end responsive web applications using React, HTML, and CSS,
+                          focusing on clean UI design and seamless user experience.
                         </p>
                       </div>
 
                       <div className="mb-4">
                         <h5 className="text-sm font-semibold text-gray-700 mb-2">Tools Used:</h5>
                         <div className="flex flex-wrap gap-2">
-                          {["TensorFlow", "PyTorch", "AWS Batch", "Metaflow", "Docker"].map((tool, index) => (
+                          {["React.js", "Java Script", "HTML", "CSS"].map((tool, index) => (
                             <span
                               key={index}
                               className="px-2 py-1 text-xs bg-blue-50 text-blue-700 rounded-full border border-blue-200"
@@ -990,7 +990,7 @@ export default function Portfolio() {
                       </div>
 
                       <motion.a
-                        href="/certificate1.pdf"
+                        href="/YUKESSHWARAN K T (3).pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
@@ -1019,30 +1019,22 @@ export default function Portfolio() {
                       className="bg-white border border-gray-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow max-w-md"
                     >
                       <div className="mb-4">
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">Freelance</h3>
-                        <h4 className="text-lg font-semibold text-blue-600 mb-3">Freelance Web Developer</h4>
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">Prodigy InfoTech</h3>
+                        <h4 className="text-lg font-semibold text-blue-600 mb-3">Full-Stack Web Development</h4>
                       </div>
 
                       <div className="mb-4">
                         <h5 className="text-sm font-semibold text-gray-700 mb-2">Responsibilities:</h5>
                         <p className="text-gray-600 text-sm leading-relaxed">
-                          Revamped UI design for UniArk (Deployed at:{" "}
-                          <a
-                            href="https://uniark.org"
-                            className="underline text-blue-600 hover:text-blue-700"
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            uniark.org
-                          </a>
-                          ) which 93% of stakeholders preferred.
+                          Delivered fully functional full-stack applications using React for the frontend and Node.js with MongoDB
+                          for the backend, focusing on responsive design solutions.
                         </p>
                       </div>
 
                       <div className="mb-4">
                         <h5 className="text-sm font-semibold text-gray-700 mb-2">Tools Used:</h5>
                         <div className="flex flex-wrap gap-2">
-                          {["React", "HTML", "CSS", "JavaScript", "UI/UX Design"].map((tool, index) => (
+                          {["React.js", "HTML", "CSS", "JavaScript", "Node.js"].map((tool, index) => (
                             <span
                               key={index}
                               className="px-2 py-1 text-xs bg-blue-50 text-blue-700 rounded-full border border-blue-200"
@@ -1054,7 +1046,7 @@ export default function Portfolio() {
                       </div>
 
                       <motion.a
-                        href="/certificate2.pdf"
+                        href="/Certificate (2).pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
@@ -1076,7 +1068,7 @@ export default function Portfolio() {
                       transition={{ duration: 0.6 }}
                       className="text-blue-600 font-bold text-lg whitespace-nowrap"
                     >
-                      February 2023 - May 2023
+                     1st September 2024 to 30th September 2024
                     </motion.div>
                   </div>
                 </div>
@@ -1273,8 +1265,8 @@ export default function Portfolio() {
                   variant={projectFilter === tag ? "default" : "outline"}
                   onClick={() => setProjectFilter(tag)}
                   className={`${projectFilter === tag
-                      ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md"
-                      : "border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-300"
+                    ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md"
+                    : "border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-300"
                     } transition-all duration-300`}
                 >
                   <Filter className="w-4 h-4 mr-2" />
