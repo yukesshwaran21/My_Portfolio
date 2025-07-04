@@ -405,23 +405,6 @@ export default function Portfolio() {
           className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 z-50 origin-left"
           style={{ scaleX: scrollProgress / 100 }}
         />
-
-        {/* Progress Indicators */}
-        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-2">
-          {["home", "about", "experience", "skills", "projects", "contact"].map((section, index) => (
-            <motion.button
-              key={section}
-              onClick={() => scrollToSection(section)}
-              className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${activeSection === section
-                ? "bg-blue-500 border-blue-500 scale-125"
-                : "border-gray-300 hover:border-blue-400"
-                }`}
-              whileHover={{ scale: 1.2 }}
-              title={section.charAt(0).toUpperCase() + section.slice(1)}
-            />
-          ))}
-        </div>
-
         {/* Navigation */}
         <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-40 border-b border-gray-200 shadow-sm">
           <div className="container mx-auto px-6 py-4">
@@ -607,31 +590,17 @@ export default function Portfolio() {
                     { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", bg: "hover:bg-green-50", isMail: true },
                   ].map(({ icon: Icon, href, color, bg, isMail }, index) => {
                     if (isMail) {
-                      // Accessible mail icon: open mail client on click or Enter/Space
+                      // Accessible mail icon: use a standard <a> for mailto, not motion.a
                       return (
-                        <motion.a
+                        <a
                           key={index}
                           href={href}
-                          tabIndex={0}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
                           className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                          style={{ cursor: 'pointer' }}
                           aria-label="Send mail"
-                          role="button"
-                          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                            e.preventDefault();
-                            window.location.href = href;
-                          }}
-                          onKeyDown={(e: React.KeyboardEvent<HTMLAnchorElement>) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              window.location.href = href;
-                            }
-                          }}
+                          style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                         >
                           <Icon className="w-6 h-6" />
-                        </motion.a>
+                        </a>
                       );
                     }
                     return (
@@ -836,23 +805,10 @@ export default function Portfolio() {
                         <motion.a
                           key={index}
                           href={href}
-                          tabIndex={0}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                           className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                          style={{ cursor: 'pointer' }}
                           aria-label="Send mail"
-                          role="button"
-                          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                            e.preventDefault();
-                            window.location.href = href;
-                          }}
-                          onKeyDown={(e: React.KeyboardEvent<HTMLAnchorElement>) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              window.location.href = href;
-                            }
-                          }}
                         >
                           <Icon className="w-6 h-6" />
                         </motion.a>
@@ -1398,8 +1354,8 @@ export default function Portfolio() {
                   <div className="space-y-4">
                     {[
                       { icon: Mail, text: "alex@example.com", href: "mailto:alex@example.com" },
-                      { icon: Github, text: "github.com/alexjohnson", href: "#" },
-                      { icon: Linkedin, text: "linkedin.com/in/alexjohnson", href: "#" },
+                    { icon: Github, text: "github.com/yukesshwaran21", href: "https://github.com/yukesshwaran21" },
+                    { icon: Linkedin, text: "linkedin.com/in/yukesshwaran-k-t-5149222b0", href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0" },
                     ].map(({ icon: Icon, text, href }, index) => (
                       <motion.a
                         key={index}
@@ -1471,53 +1427,49 @@ export default function Portfolio() {
                 <p className="text-gray-600">© 2024 Yukesshwaran. Crafted with passion for a brighter web. ✨</p>
               </div>
               <div className="flex items-center space-x-6">
-                {[
-                  { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700" },
-                  { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600" },
-                  { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600" },
-                  { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", isMail: true },
-                ].map(({ icon: Icon, href, color, isMail }, index) => {
-                  if (isMail) {
-                    return (
-                      <motion.a
-                        key={index}
-                        href={href}
-                        tabIndex={0}
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                        className={`text-gray-500 ${color} transition-all duration-300`}
-                        style={{ cursor: 'pointer' }}
-                        aria-label="Send mail"
-                        role="button"
-                        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                          e.preventDefault();
-                          window.location.href = href;
-                        }}
-                        onKeyDown={(e: React.KeyboardEvent<HTMLAnchorElement>) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            window.location.href = href;
-                          }
-                        }}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </motion.a>
-                    );
-                  }
-                  return (
-                    <motion.a
-                      key={index}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                      className={`text-gray-500 ${color} transition-all duration-300`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </motion.a>
-                  );
-                })}
+                {/* Social Icons: Github, Linkedin, Instagram, Mail */}
+                <motion.a
+                  href="https://github.com/yukesshwaran21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-gray-500 hover:text-gray-700 transition-all duration-300"
+                  aria-label="Github"
+                >
+                  <Github className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-gray-500 hover:text-blue-600 transition-all duration-300"
+                  aria-label="Linkedin"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://www.instagram.com/itz_me_yukessh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-gray-500 hover:text-pink-600 transition-all duration-300"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-gray-500 hover:text-green-600 transition-all duration-300"
+                  aria-label="Send mail"
+                >
+                  <Mail className="w-5 h-5" />
+                </motion.a>
               </div>
             </div>
           </div>
