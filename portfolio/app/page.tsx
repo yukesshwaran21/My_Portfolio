@@ -76,49 +76,38 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "Billing Software",
       description:
-        "Full-stack e-commerce solution with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard.",
-      tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      tags: ["React", "Full Stack"],
-      image: "/placeholder.svg?height=200&width=300",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
+        "Built a full-stack billing system implemented with RESTful APIs for invoice generation, user roles (admin, cashier, labour), and real-time inventory management.",
+      tech: ["React", "Node.js", "Next.js", "MongoDB","Express"],
+      tags: ["Full Stack"],
+      image: "/billing-software.jpg",
+      liveUrl: "ease-billing.vercel.app",
+      githubUrl: "https://github.com/yukesshwaran21/EaseBilling.git",
       featured: true,
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "Food Ordering Website",
       description:
-        "Collaborative task management with real-time updates using Socket.io. Built with Next.js and MongoDB.",
-      tech: ["Next.js", "Socket.io", "MongoDB", "Tailwind"],
-      tags: ["React", "Full Stack"],
-      image: "/placeholder.svg?height=200&width=300",
+        "Built a food ordering web app with React, Next.js, Express.js, and MongoDB, supporting user and admin login via authentication.",
+      tech: ["Next.js", "React", "MongoDB", "Tailwind","Stripe"],
+      tags: ["Full Stack"],
+      image: "/food.jpg",
       liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
+      githubUrl: "https://github.com/yukesshwaran21/Food_delivery_website.git",
       featured: true,
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "Beautiful weather app with location-based forecasts and interactive charts.",
-      tech: ["React", "OpenWeather API", "Chart.js"],
-      tags: ["React", "Animation"],
-      image: "/placeholder.svg?height=200&width=300",
+      title: "Movie Recommendation System",
+      description: "Built a movie recommendation system using React, Next.js, Express.js, MongoDB, and TypeScript with user personalized dashboards.",
+      tech: ["React", "TypeScript", "Tailwind","Next.js","MongoDB"],
+      tags: ["FullStack"],
+      image: "/movie.webp",
       liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
+      githubUrl: "https://github.com/yukesshwaran21/Movie_Recommendation_System.git",
       featured: false,
-    },
-    {
-      id: 4,
-      title: "Open Source UI Library",
-      description: "Reusable React component library with TypeScript support and Storybook documentation.",
-      tech: ["React", "TypeScript", "Storybook", "NPM"],
-      tags: ["React", "Open Source"],
-      image: "/placeholder.svg?height=200&width=300",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: true,
     },
   ]
 
@@ -587,36 +576,19 @@ export default function Portfolio() {
                     { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
                     { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
                     { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
-                    { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", bg: "hover:bg-green-50", isMail: true },
-                  ].map(({ icon: Icon, href, color, bg, isMail }, index) => {
-                    if (isMail) {
-                      // Accessible mail icon: use a standard <a> for mailto, not motion.a
-                      return (
-                        <a
-                          key={index}
-                          href={href}
-                          className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                          aria-label="Send mail"
-                          style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-                        >
-                          <Icon className="w-6 h-6" />
-                        </a>
-                      );
-                    }
-                    return (
-                      <motion.a
-                        key={index}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                      >
-                        <Icon className="w-6 h-6" />
-                      </motion.a>
-                    );
-                  })}
+                  ].map(({ icon: Icon, href, color, bg }, index) => (
+                    <motion.a
+                      key={index}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </motion.a>
+                  ))}
                 </motion.div>
 
                 {/* Resume Download and Contact Me Buttons */}
@@ -798,36 +770,19 @@ export default function Portfolio() {
                     { icon: Github, href: "https://github.com/yukesshwaran21", color: "hover:text-gray-700", bg: "hover:bg-gray-100" },
                     { icon: Linkedin, href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0", color: "hover:text-blue-600", bg: "hover:bg-blue-50" },
                     { icon: Instagram, href: "https://www.instagram.com/itz_me_yukessh", color: "hover:text-pink-600", bg: "hover:bg-pink-50" },
-                    { icon: Mail, href: "mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio", color: "hover:text-green-600", bg: "hover:bg-green-50", isMail: true },
-                  ].map(({ icon: Icon, href, color, bg, isMail }, index) => {
-                    if (isMail) {
-                      return (
-                        <motion.a
-                          key={index}
-                          href={href}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                          aria-label="Send mail"
-                        >
-                          <Icon className="w-6 h-6" />
-                        </motion.a>
-                      );
-                    }
-                    return (
-                      <motion.a
-                        key={index}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
-                      >
-                        <Icon className="w-6 h-6" />
-                      </motion.a>
-                    );
-                  })}
+                  ].map(({ icon: Icon, href, color, bg }, index) => (
+                    <motion.a
+                      key={index}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`text-gray-600 ${color} p-3 rounded-full bg-white/80 backdrop-blur-sm ${bg} transition-all duration-200 ease-in-out shadow-md hover:shadow-lg border border-gray-200`}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </motion.a>
+                  ))}
                 </motion.div>
 
               </motion.div>
@@ -1208,28 +1163,7 @@ export default function Portfolio() {
             >
               Featured Projects
             </motion.h2>
-            {/* Project Filter */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-wrap justify-center gap-4 mb-12"
-            >
-              {projectTags.map((tag) => (
-                <Button
-                  key={tag}
-                  variant={projectFilter === tag ? "default" : "outline"}
-                  onClick={() => setProjectFilter(tag)}
-                  className={`${projectFilter === tag
-                    ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md"
-                    : "border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-300"
-                    } transition-all duration-300`}
-                >
-                  <Filter className="w-4 h-4 mr-2" />
-                  {tag}
-                </Button>
-              ))}
-            </motion.div>
+            {/* Project Filter removed as requested */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <AnimatePresence>
                 {filteredProjects.map((project, index) => (
@@ -1269,18 +1203,11 @@ export default function Portfolio() {
                             <Github className="w-4 h-4" />
                           </motion.a>
                         </div>
-                        {project.featured && (
-                          <div className="absolute top-4 left-4">
-                            <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-semibold">
-                              <Star className="w-3 h-3 mr-1" />
-                              Featured
-                            </Badge>
-                          </div>
-                        )}
+                        {/* Featured badge removed as requested */}
                       </div>
                       <CardContent className="p-6">
                         <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-                          {project.title}
+                          {project.title === "E-Commerce Platform" ? "Billing Software" : project.title}
                         </h3>
                         <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -1353,7 +1280,7 @@ export default function Portfolio() {
 
                   <div className="space-y-4">
                     {[
-                      { icon: Mail, text: "alex@example.com", href: "mailto:alex@example.com" },
+                      { icon: Mail, text: "yukesshwaran6@gmail.com", href: "mailto:alex@example.com" },
                     { icon: Github, text: "github.com/yukesshwaran21", href: "https://github.com/yukesshwaran21" },
                     { icon: Linkedin, text: "linkedin.com/in/yukesshwaran-k-t-5149222b0", href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0" },
                     ].map(({ icon: Icon, text, href }, index) => (
@@ -1424,7 +1351,7 @@ export default function Portfolio() {
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="text-center md:text-left mb-4 md:mb-0">
-                <p className="text-gray-600">© 2024 Yukesshwaran. Crafted with passion for a brighter web. ✨</p>
+                <p className="text-gray-600">© 2026 Yukesshwaran. Crafted with passion for a brighter web. ✨</p>
               </div>
               <div className="flex items-center space-x-6">
                 {/* Social Icons: Github, Linkedin, Instagram, Mail */}
@@ -1461,15 +1388,7 @@ export default function Portfolio() {
                 >
                   <Instagram className="w-5 h-5" />
                 </motion.a>
-                <motion.a
-                  href="mailto:yukesshwaran6@gmail.com?subject=Contact%20from%20Portfolio"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-gray-500 hover:text-green-600 transition-all duration-300"
-                  aria-label="Send mail"
-                >
-                  <Mail className="w-5 h-5" />
-                </motion.a>
+                
               </div>
             </div>
           </div>
