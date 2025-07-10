@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import CustomLoading from "../components/ui/custom-loading"
 import { motion, AnimatePresence, useScroll } from "framer-motion"
 import {
   Github,
@@ -290,76 +291,7 @@ export default function Portfolio() {
   const projectTags = ["All", "React", "Full Stack", "Animation", "Open Source"]
 
   if (loading) {
-    return (
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center z-50">
-        <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-center"
-        >
-          <motion.div
-            className="w-32 h-32 mx-auto mb-8"
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          >
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <defs>
-                <linearGradient id="loader-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#3B82F6" />
-                  <stop offset="100%" stopColor="#6366F1" />
-                </linearGradient>
-              </defs>
-              <motion.path
-                d="M50,10
-                  Q65,15 70,30
-                  Q90,50 70,70
-                  Q65,85 50,90
-                  Q35,85 30,70
-                  Q10,50 30,30
-                  Q35,15 50,10Z"
-                fill="none"
-                stroke="url(#loader-gradient)"
-                strokeWidth="6"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, pathOffset: 1 }}
-                animate={{ pathLength: 1, pathOffset: 0 }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse", ease: "easeInOut" }}
-              />
-              <motion.circle
-                cx="50"
-                cy="50"
-                r="32"
-                fill="none"
-                stroke="url(#loader-gradient)"
-                strokeWidth="4"
-                strokeDasharray="10 10"
-                initial={{ strokeDashoffset: 0 }}
-                animate={{ strokeDashoffset: 60 }}
-                transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              />
-            </svg>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-4xl font-bold text-gray-800 mb-4 font-inter"
-          >
-            Welcome
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="text-blue-600 text-lg font-inter"
-          >
-            Loading amazing portfolio...
-          </motion.p>
-        </motion.div>
-      </div>
-    )
+    return <CustomLoading />
   }
 
   // Removed duplicate LoadingAnimation fallback
@@ -1279,23 +1211,36 @@ export default function Portfolio() {
                   </div>
 
                   <div className="space-y-4">
-                    {[
-                      { icon: Mail, text: "yukesshwaran6@gmail.com", href: "mailto:alex@example.com" },
-                    { icon: Github, text: "github.com/yukesshwaran21", href: "https://github.com/yukesshwaran21" },
-                    { icon: Linkedin, text: "linkedin.com/in/yukesshwaran-k-t-5149222b0", href: "https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0" },
-                    ].map(({ icon: Icon, text, href }, index) => (
-                      <motion.a
-                        key={index}
-                        href={href}
-                        whileHover={{ x: 10 }}
-                        className="flex items-center space-x-4 text-gray-600 hover:text-blue-600 transition-colors group"
-                      >
-                        <div className="p-3 bg-gray-50 rounded-full group-hover:bg-blue-50 transition-colors border border-gray-200">
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <span>{text}</span>
-                      </motion.a>
-                    ))}
+                    <a
+                      href="mailto:yukesshwaran6@gmail.com"
+                      className="flex items-center space-x-4 text-gray-600 hover:text-blue-600 transition-colors group"
+                    >
+                      <span>yukesshwaran6@gmail.com</span>
+                    </a>
+                    <motion.a
+                      href="https://github.com/yukesshwaran21"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ x: 10 }}
+                      className="flex items-center space-x-4 text-gray-600 hover:text-blue-600 transition-colors group"
+                    >
+                      <div className="p-3 bg-gray-50 rounded-full group-hover:bg-blue-50 transition-colors border border-gray-200">
+                        <Github className="w-5 h-5" />
+                      </div>
+                      <span>github.com/yukesshwaran21</span>
+                    </motion.a>
+                    <motion.a
+                      href="https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ x: 10 }}
+                      className="flex items-center space-x-4 text-gray-600 hover:text-blue-600 transition-colors group"
+                    >
+                      <div className="p-3 bg-gray-50 rounded-full group-hover:bg-blue-50 transition-colors border border-gray-200">
+                        <Linkedin className="w-5 h-5" />
+                      </div>
+                      <span>linkedin.com/in/yukesshwaran-k-t-5149222b0</span>
+                    </motion.a>
                   </div>
                 </motion.div>
 
