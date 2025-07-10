@@ -43,13 +43,13 @@ export default function CustomLoading() {
   const activeLine = Math.floor(((innerRotation % 360) / 360) * numLines) % numLines;
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] flex flex-col items-center justify-center z-50 min-h-screen select-none">
+    <div className="fixed inset-0 bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] flex flex-col items-center justify-center z-50 min-h-screen select-none px-2 sm:px-0">
       {/* Top left and right icons */}
-      <div className="absolute left-4 top-1/4 text-primary-300 opacity-40 text-3xl">&lt;&gt;</div>
-      <div className="absolute right-4 top-1/4 text-accent-200 opacity-40 text-3xl"></div>
+      <div className="absolute left-2 sm:left-4 top-8 sm:top-1/4 text-primary-300 opacity-40 text-xl sm:text-3xl">&lt;&gt;</div>
+      <div className="absolute right-2 sm:right-4 top-8 sm:top-1/4 text-accent-200 opacity-40 text-xl sm:text-3xl"></div>
 
       {/* Loader Circle with rotating inner fill */}
-      <div className="relative w-28 h-28 mb-8 flex items-center justify-center">
+      <div className="relative w-24 h-24 sm:w-28 sm:h-28 mb-6 sm:mb-8 flex items-center justify-center">
         <svg className="w-full h-full" viewBox="0 0 100 100">
           {/* Outer background circle */}
           <circle
@@ -60,12 +60,12 @@ export default function CustomLoading() {
             strokeWidth="6"
             fill="none"
           />
-          {/* Outer progress circle (blue) */}
+          {/* Outer progress circle (solid blue) */}
           <circle
             cx="50"
             cy="50"
             r="44"
-            stroke="url(#blueGradient)"
+            stroke="#2563eb"
             strokeWidth="6"
             fill="none"
             strokeDasharray={2 * Math.PI * 44}
@@ -73,12 +73,6 @@ export default function CustomLoading() {
             strokeLinecap="round"
             style={{ transition: 'stroke-dashoffset 0.2s linear' }}
           />
-          <defs>
-            <linearGradient id="blueGradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#2563eb" />
-              <stop offset="1" stopColor="#7c3aed" />
-            </linearGradient>
-          </defs>
         </svg>
         {/* Rotating inner circle */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -112,19 +106,19 @@ export default function CustomLoading() {
       </div>
 
       {/* Title */}
-      <h1 className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#a21caf] bg-clip-text text-transparent text-center">
+      <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#a21caf] bg-clip-text text-transparent text-center break-words">
         Portfolio Loading
       </h1>
-      <p className="text-xl text-slate-600 mb-8 text-center">Creating beautiful experiences</p>
+      <p className="text-base sm:text-xl text-slate-600 mb-6 sm:mb-8 text-center px-2">Creating beautiful experiences</p>
 
       {/* Progress bar and status */}
-      <div className="flex items-center justify-between w-80 max-w-full mx-auto mb-2 text-slate-500 text-sm">
-        <div className="flex items-center gap-1">
-          <span className="text-accent-400">⚡</span> Initializing...
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full max-w-xs sm:max-w-md mx-auto mb-2 text-slate-500 text-xs sm:text-sm gap-1 sm:gap-0">
+        <div className="flex items-center gap-1 justify-center sm:justify-start">
+          <span className="text-accent-400" style={{ color: "blue" }}>⚡</span> Initializing...
         </div>
-        <span className="text-primary-700">{progress}%</span>
+        <span className="text-primary-700 text-right">{progress}%</span>
       </div>
-      <div className="w-80 max-w-full h-1 bg-primary-100 rounded-full mb-6 overflow-hidden">
+      <div className="w-full max-w-xs sm:max-w-md h-1 bg-primary-100 rounded-full mb-4 sm:mb-6 overflow-hidden">
         <div
           className="h-full bg-gradient-to-r from-primary-400 to-primary-700 rounded-full animate-pulse-glow transition-all duration-200"
           style={{ width: `${progress}%` }}
@@ -136,7 +130,7 @@ export default function CustomLoading() {
         {[0, 1, 2].map((i) => (
           <span
             key={i}
-            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
               activeDot === i
                 ? 'bg-accent-500 opacity-100 scale-110 shadow-md'
                 : 'bg-primary-300 opacity-60 scale-100'

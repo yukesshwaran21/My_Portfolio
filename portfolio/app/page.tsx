@@ -569,7 +569,7 @@ export default function Portfolio() {
                   </motion.div>
                   <motion.img
                     whileHover={{ scale: 1.05 }}
-                    src="/placeholder.svg?height=400&width=400"
+                    src="/profile1.avif"
                     alt="Yukesshwaran"
                     className="relative z-10 w-80 h-80 rounded-full object-cover border-4 border-white shadow-2xl"
                   />
@@ -1215,6 +1215,10 @@ export default function Portfolio() {
                       href="mailto:yukesshwaran6@gmail.com"
                       className="flex items-center space-x-4 text-gray-600 hover:text-blue-600 transition-colors group"
                     >
+                      <div className="p-3 bg-white/80 rounded-full group-hover:bg-blue-50 transition-colors border border-gray-200 backdrop-blur-sm shadow-md hover:shadow-lg">
+                        {/* Mail Icon now matches Github/Linkedin style */}
+                        <Mail className="w-5 h-5" />
+                      </div>
                       <span>yukesshwaran6@gmail.com</span>
                     </a>
                     <motion.a
@@ -1294,47 +1298,45 @@ export default function Portfolio() {
         {/* Footer */}
         <footer className="py-8 border-t border-gray-200 bg-gray-50/50 relative z-10">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="text-center md:text-left mb-4 md:mb-0">
-                <p className="text-gray-600">© 2026 Yukesshwaran. Crafted with passion for a brighter web. ✨</p>
+            <div className="flex flex-col items-center justify-center text-center py-8">
+              {/* Subtle gradient and blur background */}
+              <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="w-full h-full bg-gradient-to-br from-blue-100/40 via-white/60 to-indigo-100/40 blur-md" />
               </div>
-              <div className="flex items-center space-x-6">
-                {/* Social Icons: Github, Linkedin, Instagram, Mail */}
-                <motion.a
-                  href="https://github.com/yukesshwaran21"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-gray-500 hover:text-gray-700 transition-all duration-300"
-                  aria-label="Github"
-                >
-                  <Github className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  href="https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-gray-500 hover:text-blue-600 transition-all duration-300"
-                  aria-label="Linkedin"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  href="https://www.instagram.com/itz_me_yukessh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-gray-500 hover:text-pink-600 transition-all duration-300"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </motion.a>
-                
+              {/* Social Icons */}
+              <div className="flex items-center justify-center space-x-6 mb-4 text-gray-800 text-2xl relative z-10">
+                <a href="https://www.linkedin.com/in/yukesshwaran-k-t-5149222b0" target="_blank" rel="noopener noreferrer" aria-label="Linkedin" className="hover:text-blue-700 transition-colors"><Linkedin className="w-6 h-6" /></a>
+                <a href="https://github.com/yukesshwaran21" target="_blank" rel="noopener noreferrer" aria-label="Github" className="hover:text-black transition-colors"><Github className="w-6 h-6" /></a>
+                <a href="mailto:yukesshwaran6@gmail.com" aria-label="Mail" className="hover:text-blue-700 transition-colors">
+                  <Mail className="w-6 h-6" />
+                </a>
               </div>
+              {/* Tagline / Mission Statement */}
+             
+              {/* Copyright and animated heart */}
+              <p className="text-gray-800 text-sm mt-2 relative z-10">© {new Date().getFullYear()} Designed with
+                <span
+                  className="inline-block align-middle mx-1 animate-heartbeat"
+                  role="img"
+                  aria-label="love"
+                >❤️</span>
+                by Yukesshwaran.
+              </p>
+              <style jsx global>{`
+                @keyframes heartbeat {
+                  0% { transform: scale(1); }
+                  10% { transform: scale(0.85); }
+                  20% { transform: scale(1.1); }
+                  30% { transform: scale(0.95); }
+                  40% { transform: scale(1.05); }
+                  50% { transform: scale(1); }
+                  100% { transform: scale(1); }
+                }
+                .animate-heartbeat {
+                  animation: heartbeat 1.2s infinite cubic-bezier(0.4,0,0.6,1);
+                  will-change: transform;
+                }
+              `}</style>
             </div>
           </div>
         </footer>
