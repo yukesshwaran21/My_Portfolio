@@ -94,8 +94,8 @@ export default function Portfolio() {
         "Built a food ordering web app with React, Next.js, Express.js, and MongoDB, supporting user and admin login via authentication.",
       tech: ["Next.js", "React", "MongoDB", "Tailwind","Stripe"],
       tags: ["Full Stack"],
-      image: "/food.jpg",
-      liveUrl: "https://example.com",
+      image: "/food1.png",
+      liveUrl: "https://food-delivery-website-kappa-three.vercel.app/",
       githubUrl: "https://github.com/yukesshwaran21/Food_delivery_website.git",
       featured: true,
     },
@@ -569,7 +569,7 @@ export default function Portfolio() {
                   </motion.div>
                   <motion.img
                     whileHover={{ scale: 1.05 }}
-                    src="/profile1.avif"
+                    src="/profile1.jpg"
                     alt="Yukesshwaran"
                     className="relative z-10 w-80 h-80 rounded-full object-cover border-4 border-white shadow-2xl"
                   />
@@ -1119,7 +1119,13 @@ export default function Portfolio() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <motion.button
-                            onClick={() => setSelectedProject(project)}
+                            onClick={() => {
+                              let url = project.liveUrl;
+                              if (url && !url.startsWith('http')) {
+                                url = 'https://' + url;
+                              }
+                              window.open(url, '_blank', 'noopener,noreferrer');
+                            }}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             className="p-2 bg-blue-500 rounded-full text-white hover:bg-blue-600 transition-colors shadow-lg"
