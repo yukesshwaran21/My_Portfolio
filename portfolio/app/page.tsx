@@ -571,7 +571,7 @@ export default function Portfolio() {
                     whileHover={{ scale: 1.05 }}
                     src="/profile1.jpg"
                     alt="Yukesshwaran"
-                    className="relative z-10 w-80 h-80 rounded-full object-cover border-4 border-white shadow-2xl"
+                    className="relative z-10 w-80 h-85 rounded-full object-cover border-4 border-white shadow-2xl"
                   />
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
