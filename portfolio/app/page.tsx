@@ -30,10 +30,17 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import emailjs from 'emailjs-com';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 
 export default function Portfolio() {
+  // Contact form state
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+  const [contactStatus, setContactStatus] = useState<string | null>(null);
+  const [contactLoading, setContactLoading] = useState(false);
   const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState("home")
   const [showBackToTop, setShowBackToTop] = useState(false)
@@ -541,7 +548,7 @@ export default function Portfolio() {
                     asChild
                   >
                     <a
-                      href="/Yukesshwaran[22ITR120] (6).pdf"
+                      href="/YukesshwaranKT[22ITR120]_Resume_1.pdf"
                       download
                       className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg"
                     >
@@ -681,7 +688,7 @@ export default function Portfolio() {
                 </h1>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   I am an Information Technology undergraduate from KEC. I am very passionate about improving my
-                  coding skills & developing applications & websites. I build WebApps and Websites using MERN Stack.
+                  coding skills & developing applications & websites. I build Websites using MERN Stack.
                   Working for myself to improve my skills. Love to build Full-Stack clones.
                 </p>
 
@@ -1262,10 +1269,43 @@ export default function Portfolio() {
                 >
                   <Card className="bg-white border border-gray-200 shadow-lg">
                     <CardContent className="p-6">
-                      <form className="space-y-6">
+                      <form
+                        className="space-y-6"
+                        onSubmit={async (e) => {
+                          e.preventDefault();
+                          setContactStatus(null);
+                          if (!contactName || !contactEmail || !contactMessage) {
+                            setContactStatus("Please fill in all fields.");
+                            return;
+                          }
+                          setContactLoading(true);
+                          try {
+                            const result = await emailjs.send(
+                              'service_j3jzhml',
+                              'template_73vhosl',
+                              {
+                                from_name: contactName,
+                                from_email: contactEmail,
+                                message: contactMessage,
+                              },
+                              'mLFBOc1N6Mt-H6EbC'
+                            );
+                            setContactStatus("Message sent successfully!");
+                            setContactName("");
+                            setContactEmail("");
+                            setContactMessage("");
+                          } catch (error) {
+                            setContactStatus("Failed to send message. Please try again later.");
+                          } finally {
+                            setContactLoading(false);
+                          }
+                        }}
+                      >
                         <div>
                           <Input
                             placeholder="Your Name"
+                            value={contactName}
+                            onChange={e => setContactName(e.target.value)}
                             className="bg-gray-50 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-blue-500 hover:border-blue-400 transition-colors"
                           />
                         </div>
@@ -1273,6 +1313,8 @@ export default function Portfolio() {
                           <Input
                             type="email"
                             placeholder="Your Email"
+                            value={contactEmail}
+                            onChange={e => setContactEmail(e.target.value)}
                             className="bg-gray-50 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-blue-500 hover:border-blue-400 transition-colors"
                           />
                         </div>
@@ -1280,17 +1322,23 @@ export default function Portfolio() {
                           <Textarea
                             placeholder="Your Message"
                             rows={5}
+                            value={contactMessage}
+                            onChange={e => setContactMessage(e.target.value)}
                             className="bg-gray-50 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-blue-500 hover:border-blue-400 resize-none transition-colors"
                           />
                         </div>
                         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                           <Button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-lg"
+                            disabled={contactLoading}
+                            className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-lg disabled:opacity-60"
                           >
                             <Zap className="w-5 h-5 mr-2" />
-                            Send Message
+                            {contactLoading ? "Sending..." : "Send Message"}
                           </Button>
+                        {contactStatus && (
+                          <div className={`text-center text-sm font-medium ${contactStatus.includes('success') ? 'text-green-600' : 'text-red-600'}`}>{contactStatus}</div>
+                        )}
                         </motion.div>
                       </form>
                     </CardContent>
